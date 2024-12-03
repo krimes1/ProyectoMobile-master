@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar class="toolbar-centered">
+    <ion-buttons slot="start" class="back-button-container">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title-centered">¡Bienvenido!</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  
+
+  <div id="container"><br><br>
+    <strong>Log In</strong><br><br>
+    <ion-card>
+      <img alt="Duoc" src="https://seeklogo.com/images/D/duoc-uc-logo-F1437952BE-seeklogo.com.png" />
+      <ion-card-header>
+        <ion-card-title>Datos de usuario</ion-card-title>
+      </ion-card-header>
+    
+      <ion-item [color]="user.username ? 'medium' : 'light'">
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input [(ngModel)]="user.username" placeholder="Ingrese nombre de usuario"></ion-input>
+      </ion-item>
+      
+      <ion-item [color]="user.password ? 'medium' : 'light'">
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input [(ngModel)]="user.password" type="password" placeholder="Ingrese su contraseña"></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <div *ngIf="mensaje" class="mensaje-error">
+      {{ mensaje }}
+    </div>
+
+    <ion-card *ngIf="spinner">
+      <div class="spinner-container">
+        <ion-label>Cargando...</ion-label>
+        <mat-spinner></mat-spinner>
+      </div>
+    </ion-card>
+
+    <ion-button 
+      shape="round" 
+      color="tertiary" 
+      (click)="validar()" 
+      [disabled]="!user.username || !user.password">
+      Conectar
+    </ion-button>
+    <ion-button shape="round" color="tertiary" [routerLink]="['/recuperarcontra']">
+      Recuperar Contraseña
+    </ion-button>
+    <ion-button shape="round" color="tertiary" [routerLink]="['/registro']">
+      Registrate
+    </ion-button>
+  </div>
+</ion-content>
