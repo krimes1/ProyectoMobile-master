@@ -5,7 +5,7 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
     path: '',
@@ -14,43 +14,42 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-    
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),
+    loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilPageModule),
     canActivate: [AuthGuard] // Protege la ruta
   },
   {
     path: 'recuperarcontra',
-    loadChildren: () => import('./recuperarcontra/recuperarcontra.module').then( m => m.RecuperarcontraPageModule)
+    loadChildren: () => import('./recuperarcontra/recuperarcontra.module').then(m => m.RecuperarcontraPageModule)
   },
   {
     path: 'registro',
-    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+    loadChildren: () => import('./registro/registro.module').then(m => m.RegistroPageModule)
   },
   {
     path: 'usuario-administrador',
-    loadChildren: () => import('./usuario-administrador/usuario-administrador.module').then( m => m.UsuarioAdministradorPageModule),
+    loadChildren: () => import('./usuario-administrador/usuario-administrador.module').then(m => m.UsuarioAdministradorPageModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'error-acceso',
-    loadChildren: () => import('./error-acceso/error-acceso.module').then( m => m.ErrorAccesoPageModule)
+    loadChildren: () => import('./error-acceso/error-acceso.module').then(m => m.ErrorAccesoPageModule)
   },
-
   {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full',
+    path: 'ver-clases',
+    loadChildren: () => import('./ver-clases/ver-clases.module').then(m => m.VerClasesPageModule)
+  },
+  {
+    path: 'registrar-clase',
+    loadChildren: () => import('./registrar-clase/registrar-clase.module').then(m => m.RegistrarClasePageModule)
   },
   {
     path: '**',
-    redirectTo: '/error-acceso', // Manejo de rutas desconocidas
-  },
-
-
+    redirectTo: '/error-acceso' // Manejo de rutas desconocidas
+  }
 ];
 
 @NgModule({
